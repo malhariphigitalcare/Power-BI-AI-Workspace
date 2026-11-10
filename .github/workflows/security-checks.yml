@@ -1,0 +1,133 @@
+name: Power BI Security Checks
+
+on:
+  push:
+    branches:
+      - main
+
+  pull_request:
+    branches:
+      - main
+
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  security-checks:
+    name: Validate committed files and TMDL
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          persist-credentials: false
+
+      - name: Validate tracked files and TMDL content
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import os
+          import re
+          import subprocess
+          from pathlib import Path, PurePosixPath
+
+          allowed_probe = (
+              "PBI-TEST/Claude-Work/Project/"
+              "SecurityTest/probe.csv"
+          ).casefold()
+
+          blocked_extensions = {
+              ".pbix", ".pbit", ".pbids", ".abf",
+              ".xlsx", ".xls", ".xlsm", ".xlsb",
+              ".csv", ".tsv", ".parquet",
+              ".db", ".sqlite", ".sqlite3",
+              ".accdb", ".mdb", ".mdf", ".ldf", ".bak"
+          }
+
+          path_violations = []
+          tmdl_violations = []
+
+          result = subprocess.run(
+              ["git", "ls-files", "-z"],
+              check=True,
+              capture_output=True
+          )
+
+          tracked_files = [
+              os.fsdecode(item)
+              for item in result.stdout.split(b"\0")
+              if item
+          ]
+
+          print(f"Checking {len(tracked_files)} tracked files...")
+
+          for file_name in tracked_files:
+              normalized = file_name.replace("\\", "/")
+              lower_path = normalized.casefold()
+              path_parts = lower_path.split("/")
+
+              # Reject Power BI cache folders.
+              if ".pbi" in path_parts:
+                  path_violations.append(
+                      f"Power BI cache folder: {normalized}"
+                  )
+                  continue
+
+              # Reject prohibited binary and data file types.
+              extension = PurePosixPath(lower_path).suffix
+
+              if extension in blocked_extensions:
+                  if lower_path != allowed_probe:
+                      path_violations.append(
+                          f"Restricted file: {normalized}"
+                      )
+                  continue
+
+              # Inspect TMDL definitions for prohibited patterns.
+              if lower_path.endswith(".tmdl"):
+                  content = Path(file_name).read_text(
+                      encoding="utf-8",
+                      errors="replace"
+                  )
+
+                  patterns = [
+                      (r"\bBinary\.FromText\b", "Binary.FromText"),
+                      (r"\bDATATABLE\s*\(", "DATATABLE(")
+                  ]
+
+                  for pattern, description in patterns:
+                      for match in re.finditer(
+                          pattern,
+                          content,
+                          re.IGNORECASE
+                      ):
+                          line_number = (
+                              content[:match.start()].count("\n") + 1
+                          )
+                          tmdl_violations.append(
+                              f"{normalized}:{line_number} "
+                              f"contains {description}"
+                          )
+
+          failed = False
+
+          if path_violations:
+              failed = True
+              print("\nFAILED: Restricted files found:")
+              for item in path_violations:
+                  print(f"  - {item}")
+
+          if tmdl_violations:
+              failed = True
+              print("\nFAILED: Prohibited TMDL patterns found:")
+              for item in tmdl_violations:
+                  print(f"  - {item}")
+
+          if failed:
+              raise SystemExit(1)
+
+          print("\nSUCCESS: No restricted files or prohibited TMDL patterns found.")
+          PY
