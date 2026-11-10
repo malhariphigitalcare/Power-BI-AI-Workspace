@@ -1,4 +1,4 @@
-expression DataFolderPath = "C:\Users\sullm\OneDrive\Documents\PBI-TEST\Data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+expression DataFolderPath = "C:\PBI-Data\" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
 	lineageTag: a49956a1-5763-457e-92c8-2f47aa061a5c
 
 	annotation PBI_NavigationStepName = Navigation
