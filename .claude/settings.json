@@ -41,7 +41,6 @@
       "Edit(**/CLAUDE.md)",
       "Edit(**/CLAUDE.local.md)",
       "Edit(//**/CLAUDE.md)",
-      "Edit(//**/.claude/**)",
       "Edit(//**/.github/**)",
       "Edit(//**/.gitignore)",
       "Edit(//**/CLAUDE.local.md)",
