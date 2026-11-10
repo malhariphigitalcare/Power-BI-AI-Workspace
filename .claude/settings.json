@@ -17,8 +17,11 @@
       "Read(//**/*.sqlite)",
       "Read(//**/*.accdb)",
       "Read(//**/.pbi/**)",
-
+      "Read(/PBI-TEST/Data/**)",
+      "Read(/PBI-TEST/Project/**)",
       
+      "Edit(/PBI-TEST/Data/**)",
+      "Edit(/PBI-TEST/Project/**)",
       "Edit(//**/*.pbix)",
       "Edit(//**/*.abf)",
       "Edit(//**/*.xlsx)",
