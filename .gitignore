@@ -1,0 +1,22 @@
+# Power BI local settings and cache
+**/.pbi/
+
+# Power BI files
+*.pbix
+*.pbit
+*.pbids
+*.abf
+
+# Excel and data files
+*.xlsx
+*.xls
+*.xlsm
+*.csv
+*.tsv
+*.parquet
+*.db
+*.sqlite
+*.accdb
+
+# Exception for synthetic security probe
+!/PBI-TEST/Claude-Work/Project/SecurityTest/probe.csv
