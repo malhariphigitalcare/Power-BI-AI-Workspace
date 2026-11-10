@@ -1,0 +1,64 @@
+{
+  "permissions": {
+    "defaultMode": "default",
+    "disableBypassPermissionsMode": "disable",
+    "blockReadsOutsideWorkingDirectories": true,
+    "blockWritesOutsideWorkingDirectories": true,
+    "deny": [
+      "Read(//**/*.pbix)",
+      "Read(//**/*.abf)",
+      "Read(//**/*.xlsx)",
+      "Read(//**/*.xls)",
+      "Read(//**/*.xlsm)",
+      "Read(//**/*.csv)",
+      "Read(//**/*.tsv)",
+      "Read(//**/*.parquet)",
+      "Read(//**/*.db)",
+      "Read(//**/*.sqlite)",
+      "Read(//**/*.accdb)",
+      "Read(//**/.pbi/**)",
+
+      
+      "Edit(//**/*.pbix)",
+      "Edit(//**/*.abf)",
+      "Edit(//**/*.xlsx)",
+      "Edit(//**/*.xls)",
+      "Edit(//**/*.xlsm)",
+      "Edit(//**/*.csv)",
+      "Edit(//**/*.tsv)",
+      "Edit(//**/*.parquet)",
+      "Edit(//**/*.db)",
+      "Edit(//**/*.sqlite)",
+      "Edit(//**/*.accdb)",
+      "Edit(//**/.pbi/**)",
+      "Edit(/CLAUDE.md)",
+      "Edit(/.claude/**)",
+      "Edit(/.gitignore)",
+      "Edit(/.github/**)",
+      "Edit(**/CLAUDE.md)",
+      "Edit(**/CLAUDE.local.md)",
+      "Edit(//**/CLAUDE.md)",
+      "Edit(//**/.claude/**)",
+      "Edit(//**/.github/**)",
+      "Edit(//**/.gitignore)",
+      "Edit(//**/CLAUDE.local.md)",
+
+      
+      "NotebookEdit",
+      "Bash",
+      "PowerShell",
+      "mcp__terminal__run_in_terminal",
+      "mcp__terminal__open_terminal_tab",
+      "mcp__terminal__read_terminal",
+      "mcp__terminal__list_terminal_tabs",
+      "mcp__terminal__stop_terminal_tab",
+
+      "mcp__*",
+
+      "WebFetch",
+      "WebSearch",
+      "Agent",
+      "Skill"
+    ]
+  }
+}
