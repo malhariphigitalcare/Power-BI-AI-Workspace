@@ -44,6 +44,14 @@
       "Edit(//**/.github/**)",
       "Edit(//**/.gitignore)",
       "Edit(//**/CLAUDE.local.md)",
+      "Edit(/PBI-TEST/Claude-Work/Project/test_sales.pbip)",
+      "Edit(/PBI-TEST/Claude-Work/Project/test_sales.Report/.platform)",
+      "Edit(/PBI-TEST/Claude-Work/Project/test_sales.Report/definition.pbir)",
+      "Edit(/PBI-TEST/Claude-Work/Project/test_sales.SemanticModel/.platform)",
+      "Edit(/PBI-TEST/Claude-Work/Project/test_sales.SemanticModel/definition.pbism)",
+      "Edit(/PBI-TEST/Claude-Work/Project/test_sales.SemanticModel/definition/expressions.tmdl)",
+      "Edit(/PBI-TEST/Claude-Work/Project/SecurityTest/**)",
+      "Edit(/PBI-TEST/Claude-Work/Project/test_sales.Report/StaticResources/**)",
 
       
       "NotebookEdit",
