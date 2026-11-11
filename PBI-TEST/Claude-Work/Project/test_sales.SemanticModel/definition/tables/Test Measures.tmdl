@@ -10,6 +10,11 @@ table 'Test Measures'
 		formatString: \$#,0.00
 		lineageTag: 37b424eb-4b7c-4527-9d41-f41e15dde958
 
+	/// Synthetic test measure: count of rows in Sales.
+	measure 'Total Sales Records' = COUNTROWS('Sales')
+		formatString: #,0
+		lineageTag: 6e2f9c41-8d3b-4a7e-b5c2-1f04d9a7e83b
+
 	column Dummy
 		isHidden
 		lineageTag: 858750a1-f765-43bf-931a-1685413370c1
