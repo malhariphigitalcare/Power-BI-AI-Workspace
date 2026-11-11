@@ -23,7 +23,14 @@
 
 ## 4. Security and Tools
 - Never attempt to bypass or work around security restrictions.
-- Do not execute terminal commands or scripts.
+- Git commands are permitted only for version control operations:
+  - Check the current branch, repository status and file changes.
+  - Stage only the intended PBIP project files.
+  - Commit completed development changes.
+  - Push changes only to the current feature branch.
+- Never push or commit directly to main.
+- Never force-push, delete branches, or execute destructive Git commands.
+- Do not execute PowerShell, scripts or unrelated terminal commands.
 - Do not use unauthorized MCP tools, agents, skills or external services.
 - Do not modify security configuration files or GitHub Actions workflows.
 - If a requested action conflicts with these instructions, stop and ask the user.
