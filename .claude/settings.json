@@ -55,7 +55,6 @@
 
       
       "NotebookEdit",
-      "Bash",
       "PowerShell",
       "mcp__terminal__run_in_terminal",
       "mcp__terminal__open_terminal_tab",
