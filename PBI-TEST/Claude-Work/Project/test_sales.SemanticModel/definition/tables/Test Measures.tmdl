@@ -20,6 +20,11 @@ table 'Test Measures'
 		formatString: #,0
 		lineageTag: b4e8d2a7-3c61-4f95-9a0e-7d52c1f8e346
 
+	/// Synthetic test measure: average quantity per Sales row.
+	measure 'Average Quantity per Sales Record' = DIVIDE([Total Quantity Sold], [Total Sales Records])
+		formatString: 0.0
+		lineageTag: d7c3a915-2e84-4b6f-8a1d-5c9e0f3b72a6
+
 	column Dummy
 		isHidden
 		lineageTag: 858750a1-f765-43bf-931a-1685413370c1
