@@ -48,7 +48,82 @@ After making changes:
 - Identify what the user must validate in Power BI Desktop.
 - Never claim numerical correctness without actual validation.
 
-## 6. Development Priority
+## 6. Power BI PBIP Development Standards
+
+### 1. Semantic Model Development
+
+- Inspect existing tables, columns, relationships, measures and TMDL definitions before making changes.
+- Follow existing measure naming conventions, descriptions, indentation and formatting.
+- Add new measures to the appropriate existing measures table.
+- Reuse existing measures when appropriate instead of duplicating business logic.
+- Verify that referenced tables and columns exist.
+- Generate a unique lineageTag GUID for every new measure.
+- Preserve existing measures, relationships, columns and model functionality unless explicitly required.
+
+### 2. Report Visual Development
+
+- Inspect existing report pages and visual definitions before creating new visuals.
+- Use an existing visual of the same type as a template whenever possible.
+- Preserve existing visual types, formatting, font sizes, styling and configuration.
+- Generate unique visual IDs and filter names.
+- Ensure visual folder names match the corresponding internal visual names.
+- Update all measure references consistently, including projections, query references, native query references, sorting and filters.
+- Do not add explicit visual titles unless requested.
+- Modify existing visuals only when required by the requested layout.
+
+### 3. Report Layout Management
+
+- Inspect report canvas dimensions and existing visual positions before adding or repositioning visuals.
+- Maintain consistent visual dimensions, spacing, alignment and formatting.
+- Keep all visuals within the report canvas.
+- Prevent visual overlaps.
+- Preserve existing visual positions unless the requested enhancement requires a layout change.
+- For multiple rows of KPI cards, maintain balanced horizontal alignment and consistent spacing.
+
+### 4. File Formatting and Consistency
+
+- Preserve the existing line-ending format when creating or modifying PBIP files. For TMDL and JSON files, match the corresponding existing project files, including Windows-style CRLF where applicable.
+- Follow the indentation and formatting conventions of neighbouring TMDL and JSON files.
+- Avoid unrelated formatting changes.
+- Do not reformat entire files unnecessarily.
+
+### 5. Static Validation
+
+Before committing:
+
+- Inspect modified TMDL and JSON file contents.
+- Verify measure names, DAX references, lineageTag GUIDs, visual IDs and filter names.
+- Verify visual folder names match their internal visual names.
+- Verify visual positions, dimensions, alignment and canvas boundaries.
+- Confirm existing visuals have not been unintentionally changed.
+- Do not execute Python, PowerShell or other scripts for static validation.
+- Review Git status and Git diff.
+- Confirm only the files required for the requested enhancement have changed.
+- Stage and commit only the intended files.
+
+### 6. Power BI Desktop Validation
+
+- Power BI Desktop validation must be completed by the user.
+- Never claim that a report has been successfully tested in Power BI Desktop unless the user confirms it.
+- Never claim numerical correctness based only on static file inspection.
+- Provide clear validation steps covering model loading, DAX results, visual rendering, formatting and report interactions.
+- The Pull Request must remain unmerged until the user confirms successful Power BI Desktop validation.
+
+### 7. Development Completion Summary
+
+For every development task, provide a final summary containing:
+
+- Business requirement implemented.
+- DAX measures created or modified.
+- Report visuals created or modified.
+- Files changed.
+- Visual positioning changes, where applicable.
+- Static validation results.
+- Feature branch and commit details.
+- Push status.
+- Remaining Power BI Desktop validation steps.
+
+## 7. Development Priority
 - Security restrictions take priority over development requests.
 - Preserve existing report functionality and formatting unless explicitly instructed otherwise.
 - Avoid unnecessary changes to unrelated files.
