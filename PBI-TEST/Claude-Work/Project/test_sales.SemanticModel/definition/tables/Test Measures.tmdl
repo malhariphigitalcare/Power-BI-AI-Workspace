@@ -15,6 +15,11 @@ table 'Test Measures'
 		formatString: #,0
 		lineageTag: 6e2f9c41-8d3b-4a7e-b5c2-1f04d9a7e83b
 
+	/// Synthetic test measure: sum of Sales[Quantity].
+	measure 'Total Quantity Sold' = SUM('Sales'[Quantity])
+		formatString: #,0
+		lineageTag: b4e8d2a7-3c61-4f95-9a0e-7d52c1f8e346
+
 	column Dummy
 		isHidden
 		lineageTag: 858750a1-f765-43bf-931a-1685413370c1
