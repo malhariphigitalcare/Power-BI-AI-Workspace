@@ -1,0 +1,92 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/item/report/definition/visualContainer/2.14.0/schema.json",
+  "name": "e5a17c3b9d0f4a2c6b81",
+  "position": {
+    "x": 767.75557379520592,
+    "y": 481.37355734601920,
+    "z": 3,
+    "height": 238.76580847250372,
+    "width": 380.79029799494128,
+    "tabOrder": 3
+  },
+  "visual": {
+    "visualType": "cardVisual",
+    "query": {
+      "queryState": {
+        "Data": {
+          "projections": [
+            {
+              "field": {
+                "Measure": {
+                  "Expression": {
+                    "SourceRef": {
+                      "Entity": "Test Measures"
+                    }
+                  },
+                  "Property": "Total Quantity Sold"
+                }
+              },
+              "queryRef": "Test Measures.Total Quantity Sold",
+              "nativeQueryRef": "Total Quantity Sold"
+            }
+          ]
+        }
+      },
+      "sortDefinition": {
+        "sort": [
+          {
+            "field": {
+              "Measure": {
+                "Expression": {
+                  "SourceRef": {
+                    "Entity": "Test Measures"
+                  }
+                },
+                "Property": "Total Quantity Sold"
+              }
+            },
+            "direction": "Descending"
+          }
+        ],
+        "isDefaultSort": true
+      }
+    },
+    "objects": {
+      "value": [
+        {
+          "properties": {
+            "fontSize": {
+              "expr": {
+                "Literal": {
+                  "Value": "35D"
+                }
+              }
+            }
+          },
+          "selector": {
+            "id": "default"
+          }
+        }
+      ]
+    },
+    "drillFilterOtherVisuals": true
+  },
+  "filterConfig": {
+    "filters": [
+      {
+        "name": "7f3c9e1a2b5d8064c4e9",
+        "field": {
+          "Measure": {
+            "Expression": {
+              "SourceRef": {
+                "Entity": "Test Measures"
+              }
+            },
+            "Property": "Total Quantity Sold"
+          }
+        },
+        "type": "Advanced"
+      }
+    ]
+  }
+}
