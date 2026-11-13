@@ -25,6 +25,11 @@ table 'Test Measures'
 		formatString: 0.0
 		lineageTag: d7c3a915-2e84-4b6f-8a1d-5c9e0f3b72a6
 
+	/// Synthetic test measure: maximum of Sales[Amount].
+	measure 'Highest Sales Amount' = MAX('Sales'[Amount])
+		formatString: \$#,0
+		lineageTag: e9a2f6c4-7b13-4d58-9c0e-3a6d1b8f5e27
+
 	column Dummy
 		isHidden
 		lineageTag: 858750a1-f765-43bf-931a-1685413370c1
