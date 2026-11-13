@@ -1,0 +1,26 @@
+table Product
+	lineageTag: 74b7542a-7f86-4ccd-a3c3-d727d625d3d6
+
+	column Product
+		dataType: string
+		lineageTag: 3e3c7983-1214-4fb6-ae40-b2c43f609c5d
+		summarizeBy: none
+		sourceColumn: Product
+
+		annotation SummarizationSetBy = Automatic
+
+	partition Product = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolderPath & "Product.csv"),[Delimiter=",", Columns=1, Encoding=1252, QuoteStyle=QuoteStyle.None]),
+				    #"Changed Type" = Table.TransformColumnTypes(Source,{{"Column1", type text}}),
+				    #"Promoted Headers" = Table.PromoteHeaders(#"Changed Type", [PromoteAllScalars=true]),
+				    #"Changed Type1" = Table.TransformColumnTypes(#"Promoted Headers",{{"Product", type text}})
+				in
+				    #"Changed Type1"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+
