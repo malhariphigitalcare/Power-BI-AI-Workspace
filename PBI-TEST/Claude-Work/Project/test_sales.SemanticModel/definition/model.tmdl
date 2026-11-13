@@ -9,12 +9,13 @@ model Model
 
 annotation __PBI_TimeIntelligenceEnabled = 1
 
-annotation PBI_QueryOrder = ["Sales","DataFolderPath"]
+annotation PBI_QueryOrder = ["Sales","DataFolderPath","Product"]
 
 annotation PBI_ProTooling = ["DevMode"]
 
 ref table Sales
 ref table 'Test Measures'
+ref table Product
 
 ref cultureInfo en-US
 

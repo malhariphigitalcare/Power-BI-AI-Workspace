@@ -1,0 +1,4 @@
+relationship AutoDetected_412b81e9-8b2d-4f1d-abfc-caff78e662f2
+	fromColumn: Sales.Product
+	toColumn: Product.Product
+
